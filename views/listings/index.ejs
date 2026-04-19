@@ -11,13 +11,15 @@
             justify-content: space-evenly;
             align-items: center;
         }
-        .filter{
-            text-align: center;
-            margin-top: 1rem;
-            margin-right: 2rem;
-            opacity: 0.8;
-            cursor: pointer;
-        }
+       .filter{
+    text-align: center;
+    margin-top: 1rem;
+    margin-right: 2rem;
+    opacity: 0.8;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
         .filter:hover{
             opacity: 1;
         }
@@ -37,49 +39,57 @@
         }
     </style>
     <div id="filters">
-        <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-        </div>
-         <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <p>Rooms</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-hill-avalanche"></i></div>
-            <p>Iconic Cities</p>
-        </div>
-         <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></div>
-            <p>Mountains</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-regular fa-chess-rook"></i></div>
-            <p>Castles</p>
-        </div>
-         <div class="filter">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <p>Amazing Pools</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
-        </div>
-         <div class="filter">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <p>Farms</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-snowflake"></i></div>
-            <p>Artic</p>
-        </div>
-        <div class="tax-toggle">
+    <a href="/listings?category=Trending" class="filter listing-link">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+    </a>
+
+    <a href="/listings?category=Rooms" class="filter listing-link">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+    </a>
+
+    <a href="/listings?category=Iconic Cities" class="filter listing-link">
+        <div><i class="fa-solid fa-hill-avalanche"></i></div>
+        <p>Iconic Cities</p>
+    </a>
+
+    <a href="/listings?category=Mountains" class="filter listing-link">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+    </a>
+
+    <a href="/listings?category=Castles" class="filter listing-link">
+        <div><i class="fa-regular fa-chess-rook"></i></div>
+        <p>Castles</p>
+    </a>
+
+    <a href="/listings?category=Amazing Pools" class="filter listing-link">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+    </a>
+
+    <a href="/listings?category=Camping" class="filter listing-link">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+    </a>
+
+    <a href="/listings?category=Farms" class="filter listing-link">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+    </a>
+
+    <a href="/listings?category=Arctic" class="filter listing-link">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+    </a>
+     <div class="tax-toggle">
         <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
   <label class="form-check-label" for="switchCheckDefault">Display after tax</label>
 </div>
 </div>
-    </div>
+</div>
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         <%for(let listing of allListings){%>
             <a href="/listings/<%=listing._id%>" class="listing-link">

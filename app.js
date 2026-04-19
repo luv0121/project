@@ -12,6 +12,8 @@ const expressError=require("./utils/expressError.js");
 const listingRouter=require("./routes/listing.js");
 const reviewRouter=require("./routes/review.js");
 const userRouter=require("./routes/user.js");
+const bookingRoutes = require("./routes/booking");
+const paymentRoutes = require("./routes/payment");
 const session=require("express-session");
 const MongoStore = require("connect-mongo").default;
 console.log(MongoStore);
@@ -89,6 +91,8 @@ app.use((req,res,next)=>{
 // })
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
+app.use("/listings/:id/bookings", bookingRoutes);
+app.use("/payments", paymentRoutes);
 app.use("/",userRouter);
 //review validates
 //error handler
@@ -99,7 +103,7 @@ app.use((err,req,res,next)=>{
     let {statuscode=500,message="something went wrong"}=err;
     res.status(statuscode).render("error.ejs",{err});
 });
-
-app.listen(8080,()=>{
-    console.log("listening on the port 8080");
-})
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+});

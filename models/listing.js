@@ -22,6 +22,21 @@ image: {
     price: Number,
     location: String,
     country: String,
+    category: {
+    type: String,
+    enum: [
+        "Trending",
+        "Rooms",
+        "Iconic Cities",
+        "Mountains",
+        "Castles",
+        "Amazing Pools",
+        "Camping",
+        "Farms",
+        "Arctic"
+    ],
+    default: "Trending"
+},
     reviews:[
         {
             type:Schema.Types.ObjectId,
@@ -43,7 +58,24 @@ image: {
       type: [Number],
       required: true
     }
-  }
+  },
+  maxGuests: {
+  type: Number,
+  default: 2,
+  min: 1
+},
+cleaningFee: {
+  type: Number,
+  default: 0
+},
+serviceFee: {
+  type: Number,
+  default: 0
+},
+isActive: {
+  type: Boolean,
+  default: true
+}
 });
 listingSchema.post("findByIdAndDelete",async(listing)=>{
     if(listing){

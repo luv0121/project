@@ -10,11 +10,11 @@ const upload=multer({storage})
 
 
 //index route ,create route
-router.route("/").get(wrapasync(listingcontroller.index)).post(isloggedin,upload.single("listing[image][url]"),validatelisting,wrapasync(listingcontroller.createroute));
+router.route("/").get(wrapasync(listingcontroller.index)).post(isloggedin,upload.single("image"),validatelisting,wrapasync(listingcontroller.createroute));
 //new route
 router.get("/new",isloggedin,listingcontroller.newroute);
 //show route ,put route ,delete route
-router.route("/:id").get(wrapasync(listingcontroller.showroute)).put(isloggedin,isOwner,upload.single("listing[image][url]"),validatelisting,wrapasync(listingcontroller.updateroute)).delete(isloggedin,isOwner,wrapasync(listingcontroller.deleteroute))
+router.route("/:id").get(wrapasync(listingcontroller.showroute)).put(isloggedin,isOwner,upload.single("image"),validatelisting,wrapasync(listingcontroller.updateroute)).delete(isloggedin,isOwner,wrapasync(listingcontroller.deleteroute))
 //edit route
 router.get("/:id/edit",isloggedin,isOwner,wrapasync(listingcontroller.editroute));
 

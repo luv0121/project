@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+    <h2>My Bookings</h2>
+
+    <% if (bookings.length === 0) { %>
+        <p>No bookings found.</p>
+    <% } %>
+
+    <div class="row">
+        <% bookings.forEach((booking) => { %>
+            <div class="col-md-6 mb-3">
+                <div class="card p-3 shadow-sm">
+                    <h4><%= booking.listing.title %></h4>
+                    <p><strong>Check-In:</strong> <%= new Date(booking.checkIn).toDateString() %></p>
+                    <p><strong>Check-Out:</strong> <%= new Date(booking.checkOut).toDateString() %></p>
+                    <p><strong>Total:</strong> ₹<%= booking.totalPrice %></p>
+                    <p><strong>Booking Status:</strong> <%= booking.bookingStatus %></p>
+                    <p><strong>Payment Status:</strong> <%= booking.paymentStatus %></p>
+
+                    <a href="/listings/<%= booking.listing._id %>/bookings/<%= booking._id %>" class="btn btn-dark">
+                        View Booking
+                    </a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>

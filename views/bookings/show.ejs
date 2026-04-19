@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+    <h2>Booking Summary</h2>
+
+    <div class="card p-4 shadow-sm">
+        <h4><%= booking.listing.title %></h4>
+        <p><strong>Check-In:</strong> <%= new Date(booking.checkIn).toDateString() %></p>
+        <p><strong>Check-Out:</strong> <%= new Date(booking.checkOut).toDateString() %></p>
+        <p><strong>Guests:</strong> <%= booking.guests %></p>
+        <p><strong>Nights:</strong> <%= booking.nights %></p>
+        <p><strong>Nightly Price:</strong> ₹<%= booking.nightlyPrice %></p>
+        <p><strong>Cleaning Fee:</strong> ₹<%= booking.cleaningFee %></p>
+        <p><strong>Service Fee:</strong> ₹<%= booking.serviceFee %></p>
+        <p><strong>Total Price:</strong> ₹<%= booking.totalPrice %></p>
+        <p><strong>Booking Status:</strong> <%= booking.bookingStatus %></p>
+        <p><strong>Payment Status:</strong> <%= booking.paymentStatus %></p>
+
+        <% if (booking.specialRequests) { %>
+            <p><strong>Special Requests:</strong> <%= booking.specialRequests %></p>
+        <% } %>
+
+        <% if (booking.paymentStatus !== "paid" && booking.bookingStatus === "pending") { %>
+            <a href="/payments/mock/<%= booking._id %>" class="btn btn-primary mt-3">
+                Proceed to Payment
+            </a>
+        <% } %>
+
+        <% if (booking.bookingStatus !== "cancelled" && booking.bookingStatus !== "failed") { %>
+            <form method="POST" action="/listings/<%= booking.listing._id %>/bookings/<%= booking._id %>/cancel" class="mt-3">
+                <button class="btn btn-danger">Cancel Booking</button>
+            </form>
+        <% } %>
+    </div>
+</div>

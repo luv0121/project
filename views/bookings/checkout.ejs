@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+    <h2>Mock Payment Page</h2>
+
+    <div class="card p-4 shadow-sm">
+        <h4><%= booking.listing.title %></h4>
+        <p><strong>Check-In:</strong> <%= new Date(booking.checkIn).toDateString() %></p>
+        <p><strong>Check-Out:</strong> <%= new Date(booking.checkOut).toDateString() %></p>
+        <p><strong>Guests:</strong> <%= booking.guests %></p>
+        <p><strong>Nights:</strong> <%= booking.nights %></p>
+        <p><strong>Total Price:</strong> ₹<%= booking.totalPrice %></p>
+
+        <hr>
+
+        <h5>Choose Payment Result</h5>
+
+        <form method="POST" action="/payments/mock/<%= booking._id %>/success" class="mb-2">
+            <button class="btn btn-success">Simulate Payment Success</button>
+        </form>
+
+        <form method="POST" action="/payments/mock/<%= booking._id %>/failure" class="mb-2">
+            <button class="btn btn-danger">Simulate Payment Failure</button>
+        </form>
+
+        <form method="POST" action="/payments/mock/<%= booking._id %>/cancel">
+            <button class="btn btn-secondary">Simulate Payment Cancel</button>
+        </form>
+    </div>
+</div>
